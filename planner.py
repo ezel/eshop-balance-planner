@@ -5,7 +5,9 @@ from numpy import ceil
 import logging
 
 COIN_TO_CURRENCY = {
-    'MXN' : 0.2
+    'MXN' : 0.2,
+    'BRL' : 0.05,
+    'AUD' : 0.01
 }
 
 logging.basicConfig(format='%(asctime)s: %(message)s',
@@ -154,12 +156,3 @@ class Planner:
     def result_plans(self):
         print(self.plans)
 
-if __name__ == "__main__":
-    print('testing...')
-    acc = Account()
-    acc.set_balance(0.08, 69)
-    acc.display()
-    p1 = Planner('data.csv')
-    plan_count = p1.get_price_plans(acc, 1)
-    pd.DataFrame(p1.get_shopping_list('name')).to_csv('plan_%s.csv' % plan_count)
-    
